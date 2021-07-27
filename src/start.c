@@ -26,6 +26,7 @@ int main()
 		return -1;
 	}
 
+	// Remove filename
 	{
 		WCHAR *const pSlash = wcsrchr(binDirPath, L'\\');
 		if (pSlash) *pSlash = L'\0';
