@@ -1,6 +1,7 @@
 #define WIN32_LEAN_AND_MEAN
 #include <windows.h>
 #include <stdio.h>
+#include <wchar.h>
 
 #define RPG_RT_COMMAND L"cmd /c start \"\" /affinity 1 \"ゆめ2っき\\RPG_RT.exe\" 0 0 Window"
 
@@ -26,12 +27,8 @@ int main()
 	}
 
 	{
-		WCHAR *pSlash = NULL;
-		for (WCHAR *p = binDirPath; *p; ++p)
-		{
-			if (*p == '\\') pSlash=p;
-		}
-		if (pSlash) *pSlash = '\0';
+		WCHAR *const pSlash = wcsrchr(binDirPath, L'\\');
+		if (pSlash) *pSlash = L'\0';
 	}
 
 	STARTUPINFO si = { sizeof(STARTUPINFO) };
